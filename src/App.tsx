@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Overlay from './component/overlay'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const Login = lazy(()=>import('./page/login'));
+const Home = lazy(()=>import('./page/home'));
+const DataDiri = lazy(()=>import('./page/dataDiri'));
+const Pendidikan = lazy(()=>import('./page/pendidikan'));
+const Kerja = lazy(()=>import('./page/pengalamanKerja'));
+const Result = lazy(()=>import('./page/result'));
+const Edit = lazy(()=>import('./page/edit'));
+const Interview = lazy(()=>import('./page/interview'));
+
+const App:React.FC = () =>{
+  return(
+    <Router>
+      <Routes>
+        <Route path='/' element={<Suspense fallback={<Overlay text="Loading..."/>}><Login/></Suspense>}/>
+        <Route path='/home' element={<Suspense fallback={<Overlay text='Loading...'/>}><Home/></Suspense>}/>
+        <Route path='/input/datadiri' element={<Suspense fallback={<Overlay text='Loading...'/>}><DataDiri/></Suspense>}/>
+        <Route path='/input/pendidikan' element={<Suspense fallback={<Overlay text='Loading...'/>}><Pendidikan/></Suspense>}/>
+        <Route path='/input/pengalaman' element={<Suspense fallback={<Overlay text='Loading...'/>}><Kerja/></Suspense>}/>
+        <Route path='/result' element={<Suspense fallback={<Overlay text='Loading...'/>}><Result/></Suspense>}/>
+        <Route path='/result/interview' element={<Suspense fallback={<Overlay text='Loading...'/>}><Interview/></Suspense>}/>
+        <Route path='/result/interview/:id' element={<Suspense fallback={<Overlay text='Loading...'/>}><Edit/></Suspense>}/>
+      </Routes>
+
+    </Router>
+  )
 }
 
 export default App;
