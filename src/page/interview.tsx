@@ -71,7 +71,15 @@ const Interview: React.FC = () => {
             let color = '';
             if (item.status.includes('New')) {
                 color = 'orange';
-            } else if (item.status.includes('Interview')) {
+            } else if (item.status.includes('Interview HC')) {
+                color = 'blue';
+            } else if (item.status.includes('Psychological Test')) {
+                color = 'blue';
+            } else if (item.status.includes('Interview User')) {
+                color = 'blue';
+            } else if (item.status.includes('Offering')) {
+                color = 'blue';
+            } else if (item.status.includes('Medical Check Up')) {
                 color = 'blue';
             } else if (item.status.includes('Rejected')) {
                 color = 'red';
