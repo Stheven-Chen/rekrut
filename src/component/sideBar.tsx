@@ -13,7 +13,7 @@ interface Content {
 }
 
 const Sidebar = (props: Content) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [isInputAccordionOpen, setIsInputAccordionOpen] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector((state:RootState)=>state.user)
@@ -74,7 +74,7 @@ const Sidebar = (props: Content) => {
   ];
 
   return (
-    <section className={`flex bg-[#0177b9] ${isOpen ? 'flex-1' : 'flex-initial'}`}>
+    <section className={`flex bg-[#89CFF0] ${isOpen ? 'flex-1' : 'flex-initial'}`}>
       <div className={`bg-[#cdcdcd] min-h-screen ${isOpen ? 'w-72' : 'w-16'} duration-500 font-Poppins text-dark px-4`}>
         <div className="py-3 flex justify-end">
           <HiMenuAlt3 size={26} className="cursor-pointer" onClick={() => {
