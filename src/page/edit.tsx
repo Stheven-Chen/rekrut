@@ -99,7 +99,7 @@ const Edit: React.FC = ()=>{
             id: selectCandidate[0].id,
             data: candidateData
           }));
-        navigate('/result')
+        navigate('/result/interview')
 
     }
 
@@ -109,8 +109,24 @@ const Edit: React.FC = ()=>{
           value: 'New'
         },
         {
-          name: "Interview",
-          value: 'Interview'
+          name: "Interview HC",
+          value: 'Interview HC'
+        },
+        {
+          name: "Psychological Test",
+          value: 'Psychological Test'
+        },
+        {
+          name: "Interview User",
+          value: 'Interview User'
+        },
+        {
+          name: "Offering",
+          value: 'Offering'
+        },
+        {
+          name: "Medical Check Up",
+          value: 'Medical Check Up'
         },
         {
           name: "Rejected",
@@ -221,7 +237,7 @@ const Edit: React.FC = ()=>{
                         text="Back"
                         textColor='white'
                         color='#FFA41B'
-                        onClick={()=>navigate('/result')}
+                        onClick={()=>navigate('/result/interview')}
                         />
                     <Button
                         text="Next"

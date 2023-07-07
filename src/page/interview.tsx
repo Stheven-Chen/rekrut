@@ -65,7 +65,7 @@ const Interview: React.FC = () => {
       content={
         <>
         <h1 className="text-xl text-gray-900 font-semibold">Interview</h1>
-        <div className="grid grid-cols-4 sm:grid-cols-1 md:grid-cols-2 gap-8 w-full h-full p-5">
+        <div className="grid grid-cols-4 sm:grid-cols-1 md:grid-cols-3 w-full gap-8 h-full p-5">
         {candidate.id.length > 0 &&
             data.map((item: Data, index: number) => {
             let color = '';
@@ -80,11 +80,9 @@ const Interview: React.FC = () => {
             }else if (item.status.includes('Consideration')) {
                 color = 'yellow';
             }
-
-
             return (
                 <div
-                className={`grid grid-cols-2 bg-white h-32 p-4 w-1/3 md:w-1/2 rounded-md gap-4 shadow-xl transform-gpu transition-transform duration-300 active:scale-90 cursor-pointer`}
+                className={`grid grid-cols-2 bg-white h-32 p-4 w-full rounded-md gap-2 shadow-xl transform-gpu transition-transform duration-300 active:scale-90 cursor-pointer`}
                 style={{borderTop: `3px solid ${color}` }}
                 key={index}
                 onClick = {()=>navigate(`/result/interview/${item.id}`)}

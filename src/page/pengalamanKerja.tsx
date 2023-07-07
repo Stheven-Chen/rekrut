@@ -4,9 +4,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '../component/button';
 import {useDispatch, useSelector} from 'react-redux';
 import {newCandidate, CandidateState} from '../reducers/candidateSlice'
+import Modal from '../component/modal'
 
 
 const Kerja: React.FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   const { state } = useLocation();
   const {
     nama,
@@ -87,8 +89,7 @@ const Kerja: React.FC = () => {
         status:'New'
       })
     );
-    
-    navigate('/home');
+    setIsOpen(true)
   };
   
 
@@ -174,6 +175,14 @@ const Kerja: React.FC = () => {
               />
             </div>
           </form>
+          {isOpen && (
+          <Modal
+          onClick={()=>{
+            setIsOpen(false);
+            navigate('/home');
+          }}
+          text = "Data Berhasil di Input"
+          />)}
         </div>
       }
     />
