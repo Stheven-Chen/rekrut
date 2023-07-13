@@ -254,7 +254,7 @@ const PsyEdit: React.FC = () => {
               />
             </div>
             <div className="flex justify-center items-center mt-6 gap-4">
-              <Button text="Back" textColor="white" color="#FFA41B" onClick={() => navigate('/result/interview')} />
+              <Button text="Back" textColor="white" color="#FFA41B" onClick={() => navigate('/result/pystest')} />
               <Button text="Next" textColor="white" />
             </div>
           </form>

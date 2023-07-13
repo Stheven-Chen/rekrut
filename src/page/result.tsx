@@ -13,7 +13,7 @@ const Result : React.FC = () =>{
             <div className={NavClass} onClick={() =>navigate('interview')}>
             Interview HC
             </div>
-            <div className={NavClass} onClick={() =>navigate('psytest')}>
+            <div className={NavClass} onClick={() =>navigate('pystest')}>
               Psychological Test
             </div>
             <div className={NavClass}>Interview User</div>
