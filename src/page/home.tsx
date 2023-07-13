@@ -5,7 +5,7 @@ import {CandidateState} from '../reducers/candidateSlice'
 
 
 const Home: React.FC = () =>{
-    const candidate = useSelector((state:CandidateState)=>state.candidate)
+    const candidate = useSelector((state:CandidateState)=>state.nama)
     console.log(candidate)
     return(
         <>

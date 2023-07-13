@@ -27,7 +27,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     try {
       // const res = await fetch(`http://192.168.137.1:3001/users/${data.username}/${data.password}`, {
-      const res = await fetch(`https://rekrutserver-production.up.railway.app/users/${data.username}/${data.password}`, {
+      const res = await fetch(`https://rekrutserver.stheven.website/users/${data.username}/${data.password}`, {
         method: 'POST'
       });
       const user = await res.json();

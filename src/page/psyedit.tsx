@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import Button from '../component/button';
 import { State } from '../component/state';
 
-const Edit: React.FC = () => {
+const PsyEdit: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   console.log('id:', id);
   const dispatch = useDispatch();
@@ -100,7 +100,7 @@ const Edit: React.FC = () => {
       hasilOffering:candidateData.hasilOffering,
       hasilMCU:candidateData.hasilMCU,
       status:candidateData.status,
-      doneStatus:'Not Yet',
+      doneStatus:candidateData.doneStatus,
       _id:candidateData._id,
     }));
 
@@ -150,7 +150,7 @@ const Edit: React.FC = () => {
     <Sidebar
       content={
         <>
-          <h1 className="text-xl text-gray-900 font-semibold">Interview HC</h1>
+          <h1 className="text-xl text-gray-900 font-semibold">Psychological Test</h1>
           <form onSubmit={submit}>
             <div className="grid grid-cols-2 gap-4">
               <label htmlFor="nama" className="text-gray-700">
@@ -208,6 +208,19 @@ const Edit: React.FC = () => {
                 value={candidateData.univ}
                 onChange={inputChange}
               />
+
+              <label htmlFor="pysDate" className="text-gray-700">
+              Psychological Test Date:
+              </label>
+              <input
+                type="date"
+                id="pysDate"
+                name="pysDate"
+                className="border border-gray-300 rounded-md p-2 w-full"
+                value={candidateData.pysDate}
+                onChange={inputChange}
+              />
+
               <label htmlFor="status" className={`text-gray-700`}>
                 Status Saat Ini:
               </label>
@@ -228,13 +241,13 @@ const Edit: React.FC = () => {
                 ))}
               </select>
 
-              <label htmlFor="hasilHC" className={`text-gray-700`}>
+              <label htmlFor="hasilPsy" className={`text-gray-700`}>
                 Hasil:
               </label>
               <textarea
-                id="hasilHC"
-                name="hasilHC"
-                value={candidateData.hasilHC}
+                id="hasilPsy"
+                name="hasilPsy"
+                value={candidateData.hasilPys}
                 onChange={inputChange}
                 className="rounded-md pl-3 w-full h-32 mt-5 p-3 font-Poppins"
                 rows={5}
@@ -251,4 +264,4 @@ const Edit: React.FC = () => {
   );
 };
 
-export default Edit;
+export default PsyEdit;

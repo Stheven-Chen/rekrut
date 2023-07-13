@@ -1,0 +1,31 @@
+export interface State{
+    nama:string;
+    jenisKelamin:string;
+    tanggalLahir:string;
+    phone:string;
+    email:string;
+    domisili:string;
+    pendTerakhir:string;
+    univ:string;
+    jurusan:string;
+    ipk:string;
+    perusahaan:string;
+    posisiT:string;
+    posisi:string;
+    sumber:string;
+    addedDate:string;
+    HCDate:string;
+    pysDate:string;
+    userDate:string;
+    offeringDate:string;
+    MCUDate:string;
+    hasilHC:string;
+    hasilPys:string;
+    hasilUser:string;
+    hasilOffering:string;
+    hasilMCU:string;
+    status:string;
+    doneStatus:string;
+    _id:any;
+  };
+

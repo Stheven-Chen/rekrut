@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Sidebar from '../component/sideBar';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '../component/button';
-import {useDispatch, useSelector} from 'react-redux';
-import {newCandidate, CandidateState} from '../reducers/candidateSlice'
+import {useDispatch} from 'react-redux';
+import {newCandidate} from '../reducers/candidateSlice'
 import Modal from '../component/modal'
 
 
@@ -30,7 +30,6 @@ const Kerja: React.FC = () => {
   });
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const candidate = useSelector((state:CandidateState)=>state.candidate)
 
   const selectOptions = [
     {
@@ -65,8 +64,6 @@ const Kerja: React.FC = () => {
 
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const lastCandidate = candidate.length > 0 ? candidate[candidate.length - 1] : null;
-    const newId = lastCandidate ? lastCandidate.id + 1 : 1;
     
     dispatch(
       newCandidate({
@@ -85,8 +82,19 @@ const Kerja: React.FC = () => {
         posisi: data.posisi,
         sumber: data.sumber,
         addedDate: new Date().toISOString().split('T')[0].toString(),
-        id: newId,
-        status:'New'
+        status:'Interview HC',
+        HCDate:'',
+        pysDate:'',
+        userDate:'',
+        offeringDate:'',
+        MCUDate:'',
+        hasilHC:'',
+        hasilPys:'',
+        hasilUser:'',
+        hasilOffering:'',
+        hasilMCU:'',
+        doneStatus:'Not Yet',
+        _id:undefined
       })
     );
     setIsOpen(true)

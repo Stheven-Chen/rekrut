@@ -10,6 +10,8 @@ const Kerja = lazy(()=>import('./page/pengalamanKerja'));
 const Result = lazy(()=>import('./page/result'));
 const Edit = lazy(()=>import('./page/edit'));
 const Interview = lazy(()=>import('./page/interview'));
+const Psy = lazy(()=>import('./page/psy'));
+const PsyEdit = lazy(()=>import('./page/psyedit'));
 
 const App:React.FC = () =>{
   return(
@@ -23,6 +25,8 @@ const App:React.FC = () =>{
         <Route path='/result' element={<Suspense fallback={<Overlay text='Loading...'/>}><Result/></Suspense>}/>
         <Route path='/result/interview' element={<Suspense fallback={<Overlay text='Loading...'/>}><Interview/></Suspense>}/>
         <Route path='/result/interview/:id' element={<Suspense fallback={<Overlay text='Loading...'/>}><Edit/></Suspense>}/>
+        <Route path='/result/pystest' element={<Suspense fallback={<Overlay text='Loading...'/>}><Psy/></Suspense>}/>
+        <Route path='/result/pystest/:id' element={<Suspense fallback={<Overlay text='Loading...'/>}><PsyEdit/></Suspense>}/>
       </Routes>
 
     </Router>
