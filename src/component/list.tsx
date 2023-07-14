@@ -69,7 +69,7 @@ const List = (props: ListProps) => {
           <span>Table View</span>
         </div>
         {table ? ( // Render as table if table state is true
-          <table className="table-auto w-full border-collapse">
+          <table className="table-auto w-full border-collapse rounded-xl overflow-x-auto">
             <thead>
               <tr>
                 <th className="px-4 py-2 text-left">Name</th>
@@ -82,30 +82,12 @@ const List = (props: ListProps) => {
             <tbody>
               {candidate.length > 0 &&
                 candidate.map((item: State, index: number) => {
-                  let color = '';
-                  if (item.status.includes('New')) {
-                    color = 'orange';
-                  } else if (
-                    item.status.includes('Interview HC') ||
-                    item.status.includes('Psychological Test') ||
-                    item.status.includes('Interview User') ||
-                    item.status.includes('Offering') ||
-                    item.status.includes('Medical Check Up')
-                  ) {
-                    color = 'blue';
-                  } else if (item.status.includes('Rejected')) {
-                    color = 'red';
-                  } else if (item.status.includes('Accepted')) {
-                    color = 'green';
-                  } else if (item.status.includes('Consideration')) {
-                    color = 'yellow';
-                  }
+                  
                   return (
                     <tr
                       className={`bg-white transition-colors duration-300 ${
                         index % 2 === 0 ? 'bg-gray-100' : ''
                       }`}
-                      style={{ borderTop: `3px solid ${color}` }}
                       key={index}
                     >
                       <td className="px-4 py-2">{item.nama}</td>
