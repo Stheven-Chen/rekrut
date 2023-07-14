@@ -25,7 +25,12 @@ export interface State{
     hasilOffering:string;
     hasilMCU:string;
     status:string;
-    doneStatus:string;
+    HCStatus:string;
+    userStatus:string;
+    pysStatus:string;
+    offeringstatus:string;
+    mcuStatus:string;
+    lokasi:string;
     _id:any;
   };
 

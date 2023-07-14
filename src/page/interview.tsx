@@ -1,40 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Sidebar from '../component/sideBar';
-import { State } from '../component/state';
 import List from '../component/list';
+import { useParams } from 'react-router-dom';
 
 const Interview: React.FC = () => {
-  const [candidate, setCandidate] = useState<State[]>([]);
-
+  const [need, setNeed] = React.useState('');
+  const { where } = useParams<{ where: string }>();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const query = 'Interview HC'
-        const res = await fetch(`https://rekrutserver.stheven.website/show?status=${query}`);
-        if (!res.ok) {
-          throw new Error('Gagal Melakukan Fetch Data');
-        }
-        const data = await res.json();
-        setCandidate(data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    fetchData();
-  }, []);
+    if (where === "interview") {
+      setNeed('Interview HC');
+    }
+    if (where === "pystest") {
+      setNeed('Psychological Test');
+    }
+    if (where === "interviewuser") {
+      setNeed('Interview User');
+    }
+    if (where === "offering") {
+      setNeed('Offering');
+    }
+    if (where === "mcu") {
+      setNeed('Medical Check Up');
+    }
+  }, [where, need]);
 
   return (
     <Sidebar
       content={
-        
-          <List
-          judul='Interview HC'
-          data={candidate}
-          to='interview'
-          />
-  
+        <List judul={need} data={need} to={where} />
       }
     />
   );

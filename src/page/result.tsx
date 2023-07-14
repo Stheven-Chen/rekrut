@@ -10,15 +10,15 @@ const Result : React.FC = () =>{
       content={
         <>
           <div className='flex flex-col justify-center items-center gap-5 font-Poppins text-lg font-semibold'>
-            <div className={NavClass} onClick={() =>navigate('interview')}>
+            <div className={NavClass} onClick={() =>navigate('/result/interview')}>
             Interview HC
             </div>
             <div className={NavClass} onClick={() =>navigate('pystest')}>
               Psychological Test
             </div>
-            <div className={NavClass}>Interview User</div>
-            <div className={NavClass}>Offering</div>
-            <div className={NavClass}>Medical Check Up</div>
+            <div className={NavClass} onClick={() =>navigate('interviewuser')}>Interview User</div>
+            <div className={NavClass} onClick={() =>navigate('offering')}>Offering</div>
+            <div className={NavClass} onClick={() =>navigate('mcu')}>Medical Check Up</div>
           </div>
         </>
       }

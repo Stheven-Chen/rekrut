@@ -29,7 +29,12 @@ const initialState:State = {
   hasilOffering: '',
   hasilMCU: '',
   status: '',
-  doneStatus: '',
+  HCStatus: '',
+  userStatus: '',
+  pysStatus: '',
+  offeringstatus: '',
+  mcuStatus: '',
+  lokasi:'',
   _id: undefined
 }
 
@@ -64,7 +69,12 @@ export const candidateSlice = createSlice({
           state.hasilOffering = action.payload.hasilOffering;
           state.hasilMCU = action.payload.hasilMCU;
           state.status = action.payload.status;
-          state.doneStatus = action.payload.doneStatus;
+          state.HCStatus = action.payload.HCStatus;
+          state.userStatus = action.payload.userStatus;
+          state.pysStatus = action.payload.pysStatus;
+          state.offeringstatus = action.payload.offeringstatus;
+          state.lokasi = action.payload.lokasi;
+          state.mcuStatus = action.payload.mcuStatus;
 
           fetch('https://rekrutserver.stheven.website/candidates', {
             method:'POST',
@@ -104,7 +114,12 @@ export const candidateSlice = createSlice({
           state.hasilOffering = action.payload.hasilOffering;
           state.hasilMCU = action.payload.hasilMCU;
           state.status = action.payload.status;
-          state.doneStatus = action.payload.doneStatus;
+          state.HCStatus = action.payload.HCStatus;
+          state.userStatus = action.payload.userStatus;
+          state.pysStatus = action.payload.pysStatus;
+          state.offeringstatus = action.payload.offeringstatus;
+          state.mcuStatus = action.payload.mcuStatus;
+          state.lokasi = action.payload.lokasi;
           state._id = action.payload._id;
 
           fetch(`https://rekrutserver.stheven.website/candidates?id=${state._id}`, {

@@ -26,11 +26,23 @@ const Kerja: React.FC = () => {
     perusahaan: '',
     posisiT: '',
     posisi: '',
-    sumber: ''
+    sumber: '',
+    lokasi:''
   });
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+
+  const loc = [
+    {
+      name:'Kantor Pusat - WTC',
+      value:'Kantor Pusat - WTC'
+    },
+    {
+      name:'Kantor Pusat - SSC',
+      value:'Kantor Pusat - SSC'
+    },
+  ]
   const selectOptions = [
     {
       name: "BDP",
@@ -93,7 +105,8 @@ const Kerja: React.FC = () => {
         hasilUser:'',
         hasilOffering:'',
         hasilMCU:'',
-        doneStatus:'Not Yet',
+        HCStatus:'Not Yet',
+        lokasi:data.lokasi,
         _id:undefined
       })
     );
@@ -142,6 +155,21 @@ const Kerja: React.FC = () => {
               >
                 <option value="" className='text-center'>--Pilih--</option>
                 {selectOptions.map((item, index) => (
+                  <option key={index} value={item.value}>{item.name}</option>
+                ))}
+              </select>
+               <label htmlFor="lokasi" className={`text-gray-700`}>
+                Lokasi:
+              </label>
+              <select
+                id="lokasi"
+                name="lokasi"
+                value={data.lokasi}
+                onChange={inputChange}
+                className="border border-gray-300 rounded-md p-2 w-full"
+              >
+                <option value="" className='text-center'>--Pilih--</option>
+                {loc.map((item, index) => (
                   <option key={index} value={item.value}>{item.name}</option>
                 ))}
               </select>
