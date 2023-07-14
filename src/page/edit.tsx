@@ -57,8 +57,8 @@ const Edit: React.FC = () => {
           throw new Error(`Gagal Mengambil Data dengan id : ${id}`);
         }
         const data = await res.json();
-        console.log(data[0])
-        setCandidateData(data[0]);
+        console.log(data)
+        setCandidateData(data[0][0]);
       } catch (err) {
         console.error(err);
       }
@@ -66,6 +66,7 @@ const Edit: React.FC = () => {
 
     fetchData();
   }, [id]);
+
 
   useEffect(()=>{
     if(where){
