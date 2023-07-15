@@ -56,17 +56,14 @@ const List = (props: ListProps) => {
   }, [p, props.data]);
 
   return (
-    <>
+    <div className='font-Poppins'>
       <h1 className="text-xl text-gray-900 font-semibold">{props.judul}</h1>
       <div className="w-full p-5">
-        <div className="flex items-center mt-4 mb-2">
-          <input
-            type="checkbox"
-            checked={table}
-            onChange={() => setTable(!table)}
-            className="mr-2"
-          />
-          <span>Table View</span>
+      <div className="flex items-center mt-4 mb-2 gap-3">
+          <div onClick={()=>setTable(!table)} className={`bg-gray-300 cursor-pointer rounded-full duration-300 transition-colors h-5 w-10 ${table?'bg-green-500':''}`}>
+            <div className={`bg-white h-5 w-5 rounded-full ${table?'translate-x-5':''} duration-300 transition-all `}/>
+          </div>
+          <span className='font-Poppins'>Table View</span>
         </div>
         {table ? ( // Render as table if table state is true
           <table className="table-auto w-full border-collapse rounded-xl overflow-x-auto">
@@ -108,7 +105,7 @@ const List = (props: ListProps) => {
           // Render as card if table state is false
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {candidate.length > 0 &&
-              candidate.map((item: State, index: number) => {
+              candidate.map((item: State) => {
                 let color = '';
                 if (item.status.includes('New')) {
                   color = 'orange';
@@ -129,9 +126,9 @@ const List = (props: ListProps) => {
                 }
                 return (
                   <div
-                    className={`grid grid-cols-2 bg-white h-32 p-4 w-full rounded-md gap-2 shadow-xl transform-gpu transition-transform duration-300 active:scale-90 cursor-pointer`}
+                    className={`grid grid-cols-2 bg-white h-32 p-4 text-sm w-full rounded-md gap-2 shadow-xl transform-gpu transition-transform duration-300 active:scale-90 cursor-pointer`}
                     style={{ borderTop: `3px solid ${color}` }}
-                    key={index}
+                    key={item._id}
                     onClick={() =>
                       navigate(`/result/${props.to}/${item._id}`)
                     }
@@ -162,7 +159,7 @@ const List = (props: ListProps) => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
