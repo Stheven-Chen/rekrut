@@ -1,1 +1,0 @@
-import{f as e,g as u,h as c}from"./index-077d71af.js";function n(t=e){const o=t===e?u:c(t);return function(){const{store:s}=o();return s}}const a=n();function i(t=e){const o=t===e?a:n(t);return function(){return o().dispatch}}const d=i(),f="/assets/logo-1db4b988.svg";export{f as l,d as u};

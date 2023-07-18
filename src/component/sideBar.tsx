@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { HiMenuAlt3, HiOutlineNewspaper, HiOutlineLogout } from 'react-icons/hi';
 import { NavLink } from 'react-router-dom';
-import { MdOutlineDashboard } from 'react-icons/md';
+import { MdOutlineDashboard,MdOutlineImportExport } from 'react-icons/md';
 import { AiOutlineForm } from 'react-icons/ai';
 import { logout } from '../reducers/userSlice';
 import {useSelector} from 'react-redux';
 import { RootState } from '../reducers/userSlice';
+import logoImage from '../assets/logo.svg';
+import Modal from './modal'
 
 interface Content {
   content: any;
@@ -15,6 +17,8 @@ interface Content {
 const Sidebar = (props: Content) => {
   const [isOpen, setIsOpen] = useState(true);
   const [isInputAccordionOpen, setIsInputAccordionOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalText, setModalText] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector((state:RootState)=>state.user)
 
@@ -26,6 +30,16 @@ const Sidebar = (props: Content) => {
       })
     );
   };
+
+  const generateLink = async () =>{
+    try{
+      const res = await fetch('https://rekrutserver.stheven.website/generate');
+      const data:{UUID:string} = await res.json()
+      setModalText(`https://client.stheven.website/${data.UUID}`)
+    }catch(e){
+      console.error(e)
+    }
+  }
 
   const handleInputAccordionToggle = () => {
     setIsInputAccordionOpen(!isInputAccordionOpen);
@@ -70,7 +84,8 @@ const Sidebar = (props: Content) => {
       ), 
     },
     { name: 'Result', link: '/result', icon: HiOutlineNewspaper },
-    { name: 'Logout', link: '/', icon: HiOutlineLogout},
+    { name: 'Generate Link', icon: MdOutlineImportExport},
+    { name: 'Logout', link: '/', icon: HiOutlineLogout}
   ];
 
   return (
@@ -86,7 +101,7 @@ const Sidebar = (props: Content) => {
         </div>
         <div className="mt-4 flex flex-col gap-4 relative">
           <div className={`text-2xl font-bold mb-2 text-dark duration-500 ${!isOpen ? 'opacity-0 translate-x-28 overflow-hidden' : ''}`}>
-            <img src="/assets/logo.svg" alt="Logo" />
+            <img src={logoImage} alt="Logo" />
           </div>
           <span className={`text-xl font-bold mb-2 text-dark duration-500 ${!isOpen ? 'opacity-0 translate-x-28 overflow-hidden' : ''}`}>
             {`Hello, ${user.nama.split(' ').slice(0, 2).join(' ')}`}
@@ -109,15 +124,19 @@ const Sidebar = (props: Content) => {
                   {menu.isAccordionOpen && <div className="ml-6">{menu.accordionContent}</div>}
                 </React.Fragment>
               );
-            } else {
+            }else {
               return (
                 <NavLink
                   key={index}
                   to={menu.link}
                   className={`flex items-center text-sm gap-3.5 font-medium hover:bg-sky-500 rounded-md p-2 transform-gpu transition-transform duration-300 active:scale-90 ${menu.name  === 'Logout' ? "mt-14" : ""}`}
-                  onClick={() => {
+                  onClick={async () => {
                     if (menu.name === 'Logout') {
                       handleLogout();
+                    }
+                    if(menu.name === 'Generate Link'){
+                      await generateLink()
+                      setShowModal(true)
                     }
                   }}
                 >
@@ -133,7 +152,15 @@ const Sidebar = (props: Content) => {
                 </NavLink>
               );
             }
+            
           })}
+          {showModal && (
+            <Modal
+            header="Link"
+            text={modalText}
+            onClick={()=>setShowModal(false)}
+            />
+          )}
         </div>
       </div>
       <div className={`mx-3 mt-10  whitespace-pre  w-full p-5 `}>{props.content}</div>
